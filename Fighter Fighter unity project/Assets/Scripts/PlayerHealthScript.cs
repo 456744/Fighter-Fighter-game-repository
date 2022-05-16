@@ -21,16 +21,8 @@ public class PlayerHealthScript : MonoBehaviour
     {
         if (Attack == false)
         {
-            if (Input.GetKeyDown("j"))
-            {
 
-                Attack = true;
-
-                StartCoroutine(Wait());
-
-            }
-
-            if (Input.GetKeyDown("l"))
+            if (Input.GetKeyDown("l") || Input.GetKeyDown("j"))
             {
 
                 Attack = true;

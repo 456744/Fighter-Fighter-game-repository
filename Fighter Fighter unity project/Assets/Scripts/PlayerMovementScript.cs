@@ -8,9 +8,20 @@ public class PlayerMovementScript : MonoBehaviour
 
     float strength;
 
-    private void Start()
+    bool Attack;
+
+    bool Duck;
+
+    // Start is called before the first frame update
+    void Start()
     {
+
+        Attack = false;
+
+        Duck = false;
+
         OurRigidBody = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -19,49 +30,107 @@ public class PlayerMovementScript : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        if (Input.GetKey("w"))
+        if (Duck == false)
         {
 
-            Vector2 direction = Vector2.up;
+            if (Input.GetKey("w"))
+            {
 
-            strength = 2;
+                Vector2 direction = Vector2.up;
 
-            OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
+                strength = 2;
+
+                OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
+
+            }
+
+            if (Input.GetKey("s"))
+            {
+
+                Vector2 direction = Vector2.down;
+
+                strength = 2;
+
+                OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
+
+            }
+
+            if (Input.GetKey("a"))
+            {
+
+                Vector2 direction = Vector2.left;
+
+                strength = 5;
+
+                OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
+
+            }
+
+            if (Input.GetKey("d"))
+            {
+
+                Vector2 direction = Vector2.right;
+
+                strength = 5;
+
+                OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
+
+            }
 
         }
 
-        if (Input.GetKey("s"))
+        if (Attack == false)
         {
 
-            Vector2 direction = Vector2.down;
+            if (Input.GetKeyDown("l") || Input.GetKeyDown("j"))
+            {
 
-            strength = 2;
+                Attack = true;
 
-            OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
+                StartCoroutine(Wait());
 
+            }
+
+            if (Input.GetKeyDown("i"))
+            {
+
+                Attack = true;
+
+                StartCoroutine(Wait2());
+
+            }
+
+            if (Input.GetKeyDown("k"))
+            {
+
+                Attack = true;
+
+                Duck = true;
+
+                StartCoroutine(Wait2());
+
+            }
         }
+    }
 
-        if (Input.GetKey("a"))
-        {
+    IEnumerator Wait()
+    {
 
-            Vector2 direction = Vector2.left;
+        yield return new WaitForSecondsRealtime((float)0.5);
 
-            strength = 5;
+        Attack = false;
 
-            OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
+    }
 
-        }
+    IEnumerator Wait2()
+    {
 
-        if (Input.GetKey("d"))
-        {
+        yield return new WaitForSecondsRealtime((float)2.5);
 
-            Vector2 direction = Vector2.right;
+        Attack = false;
 
-            strength = 5;
+        Duck = false;
 
-            OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
-
-        }
     }
 
 }

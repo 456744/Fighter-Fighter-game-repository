@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+
     Rigidbody2D OurRigidBody;
 
     float strength;
@@ -38,7 +39,7 @@ public class PlayerMovementScript : MonoBehaviour
 
                 Vector2 direction = Vector2.up;
 
-                strength = 2;
+                strength = 3;
 
                 OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
 
@@ -49,7 +50,7 @@ public class PlayerMovementScript : MonoBehaviour
 
                 Vector2 direction = Vector2.down;
 
-                strength = 2;
+                strength = 3;
 
                 OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
 

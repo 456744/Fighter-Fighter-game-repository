@@ -92,7 +92,7 @@ public class PlayerAttackScript : MonoBehaviour
 
         yield return new WaitForSecondsRealtime((float)0.5);
 
-        Hitbox.gameObject.transform.localScale = new Vector2((float)0.1, (float)0.75);
+        Hitbox.gameObject.transform.localScale = new Vector2((float)0.2, (float)3);
 
         Attack = false;
 

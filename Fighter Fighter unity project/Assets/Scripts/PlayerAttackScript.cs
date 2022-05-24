@@ -9,6 +9,8 @@ public class PlayerAttackScript : MonoBehaviour
 
     GameObject Hitbox;
 
+    Rigidbody2D RB2D;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,8 @@ public class PlayerAttackScript : MonoBehaviour
         Attack = false;
 
         Hitbox = GameObject.Find("Player hitbox");
+
+        RB2D = gameObject.GetComponent<Rigidbody2D>();
 
     }
 
@@ -29,7 +33,7 @@ public class PlayerAttackScript : MonoBehaviour
 
                 Attack = true;
 
-                transform.localPosition = new Vector3(-1, 0, 0);
+                RB2D.MovePosition(RB2D.position + (new Vector2(-2, 0)));
 
                 StartCoroutine(Wait());
 
@@ -40,7 +44,7 @@ public class PlayerAttackScript : MonoBehaviour
 
                 Attack = true;
 
-                transform.localPosition = new Vector3(1, 0, 0);
+                RB2D.MovePosition(RB2D.position + (new Vector2(2, 0)));
 
                 StartCoroutine(Wait());
 
@@ -73,7 +77,7 @@ public class PlayerAttackScript : MonoBehaviour
 
         yield return new WaitForSecondsRealtime((float)0.5);
 
-        transform.localPosition = new Vector3(0, 0, 0);
+        transform.localPosition = new Vector2(0, 0);
 
         Attack = false;
 

@@ -33,7 +33,7 @@ public class EnemyMovementScript : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        if (Vector2.Distance(Player.transform.position, gameObject.transform.position) > 3.5)
+        if (Vector2.Distance(Player.transform.position, gameObject.transform.position) > 3.6)
         {
 
             Vector2 direction = Player.transform.position - gameObject.transform.position ;
@@ -42,7 +42,7 @@ public class EnemyMovementScript : MonoBehaviour
 
         }
 
-        if (Vector2.Distance(Player.transform.position, gameObject.transform.position) < 3)
+        if (Vector2.Distance(Player.transform.position, gameObject.transform.position) < 3.4)
         {
 
             Vector2 direction = -(Player.transform.position - gameObject.transform.position);

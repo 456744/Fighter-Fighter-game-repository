@@ -22,15 +22,14 @@ public class PlayerHealthScript : MonoBehaviour
 
         Health = 5000;
 
-        FindHit = GameObject.FindGameObjectsWithTag("PlayerHit");
-
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        
+        FindHit = GameObject.FindGameObjectsWithTag("EnemyHit");
+
         Vector3 position = transform.position;
 
         GameObject closest = null;

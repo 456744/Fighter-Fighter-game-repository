@@ -84,7 +84,7 @@ public class EnemyAttackScript : MonoBehaviour
 
         transform.localPosition = new Vector2(0, 0);
 
-        yield return new WaitForSecondsRealtime((float)0.5);
+        yield return new WaitForSecondsRealtime((float)1.25);
 
         Attack = false;
 

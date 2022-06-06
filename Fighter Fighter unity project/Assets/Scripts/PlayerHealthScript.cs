@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthScript : MonoBehaviour
 {
+
+    public int Health;
+
+    GameObject[] FindHit;
+
 
     bool Attack;
 
@@ -14,11 +20,52 @@ public class PlayerHealthScript : MonoBehaviour
 
         Attack = false;
 
+        Health = 5000;
+
+        FindHit = GameObject.FindGameObjectsWithTag("PlayerHit");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        
+        Vector3 position = transform.position;
+
+        GameObject closest = null;
+
+        float distance = Mathf.Infinity;
+
+        foreach (GameObject Hit in FindHit)
+        {
+            Vector3 diff = Hit.transform.position - position;
+
+            float curDistance = diff.sqrMagnitude;
+
+            if (curDistance < distance)
+            {
+                closest = Hit;
+
+                distance = curDistance;
+            }
+        }
+
+        if (Vector2.Distance(closest.transform.position, gameObject.transform.position) < 1)
+        {
+            Debug.LogWarning(Vector2.Distance(closest.transform.position, gameObject.transform.position));
+
+            Health--;
+        }
+
+        if (Health == 0)
+        {
+
+            Debug.LogWarning("Player scene change");
+
+            SceneManager.LoadScene("Win Screen");
+        }
+
         if (Attack == false)
         {
 

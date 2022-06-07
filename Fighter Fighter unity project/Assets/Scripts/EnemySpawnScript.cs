@@ -13,6 +13,8 @@ public class EnemySpawnScript : MonoBehaviour
 
     int SpawnS;
 
+    public int SpawnR;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,8 @@ public class EnemySpawnScript : MonoBehaviour
         Instantiate(BEnemy);
 
         SpawnS = 0;
+
+        SpawnR = 0;
 
 
     }
@@ -46,6 +50,14 @@ public class EnemySpawnScript : MonoBehaviour
 
             SpawnS = 0;
 
+        }
+
+        if(SpawnR > 0)
+        {
+
+            Instantiate(BEnemy);
+
+            SpawnR--;
         }
 
 

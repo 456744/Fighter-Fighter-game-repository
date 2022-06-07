@@ -12,16 +12,23 @@ public class EnemyHealthScript : MonoBehaviour
 
     GameObject[] FindHit;
 
-    public GameObject BEnemy;
+    public GameObject SpawnR;
+
+    public GameObject Score;
+
+    public int ScoreUp;
 
     // Start is called before the first frame update
     void Start()
     {
-        Health = 350;
 
         FindHit = GameObject.FindGameObjectsWithTag("PlayerHit");
 
         Hit = FindHit[0];
+
+        SpawnR = (GameObject.FindGameObjectsWithTag("Respawn"))[0];
+
+        Score = (GameObject.FindGameObjectsWithTag("Score"))[0];
     }
 
     // Update is called once per frame
@@ -33,12 +40,15 @@ public class EnemyHealthScript : MonoBehaviour
             Health--;
         }
 
-        if(Health == 0)
+        if(Health <= 0)
         {
 
-            Instantiate(BEnemy);
+            SpawnR.GetComponent<EnemySpawnScript>().SpawnR++;
 
-            Destroy(transform.parent.gameObject);
+            Score.GetComponent<ScoreScript>().Score = (Score.GetComponent<ScoreScript>().Score + ScoreUp);
+
+            Destroy(transform.root.gameObject);
+
         }
 
     }

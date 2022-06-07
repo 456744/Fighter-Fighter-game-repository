@@ -52,7 +52,6 @@ public class PlayerHealthScript : MonoBehaviour
 
         if (Vector2.Distance(closest.transform.position, gameObject.transform.position) < 1)
         {
-            Debug.LogWarning(Vector2.Distance(closest.transform.position, gameObject.transform.position));
 
             Health--;
         }

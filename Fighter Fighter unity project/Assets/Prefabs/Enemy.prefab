@@ -160,7 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29c97e2f6138f148a1c087f678f49cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 350
+  SpawnR: {fileID: 0}
+  Score: {fileID: 0}
+  ScoreUp: 1
 --- !u!1 &9037780991407301038
 GameObject:
   m_ObjectHideFlags: 0

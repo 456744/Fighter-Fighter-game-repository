@@ -12,6 +12,8 @@ public class EnemyHealthScript : MonoBehaviour
 
     GameObject[] FindHit;
 
+    public GameObject BEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +36,9 @@ public class EnemyHealthScript : MonoBehaviour
         if(Health == 0)
         {
 
-            Debug.LogWarning("scene change");
+            Instantiate(BEnemy);
 
-            SceneManager.LoadScene("Win Screen");
+            Destroy(transform.parent.gameObject);
         }
 
     }

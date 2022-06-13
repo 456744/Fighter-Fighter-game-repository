@@ -10,6 +10,7 @@ public class PlayerHealthScript : MonoBehaviour
 
     GameObject[] FindHit;
 
+    private Animator animator;
 
     bool Attack;
 
@@ -22,11 +23,15 @@ public class PlayerHealthScript : MonoBehaviour
 
         Health = 5000;
 
+        animator = gameObject.GetComponentInParent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        animator.SetBool("Hit", false);
 
         FindHit = GameObject.FindGameObjectsWithTag("EnemyHit");
 
@@ -54,14 +59,16 @@ public class PlayerHealthScript : MonoBehaviour
         {
 
             Health--;
+
+            animator.SetBool("Hit", true);
         }
 
         if (Health == 0)
         {
 
-            Debug.LogWarning("Player scene change");
+            animator.SetBool("Defeat", true);
 
-            SceneManager.LoadScene("Win Screen");
+            StartCoroutine(Wait4());
         }
 
         if (Attack == false)
@@ -126,6 +133,15 @@ public class PlayerHealthScript : MonoBehaviour
         transform.localPosition = new Vector3(0, 0, 0);
 
         Attack = false;
+
+    }
+
+    IEnumerator Wait4()
+    {
+
+        yield return new WaitForSecondsRealtime(2);
+
+        SceneManager.LoadScene("Win Screen");
 
     }
 }

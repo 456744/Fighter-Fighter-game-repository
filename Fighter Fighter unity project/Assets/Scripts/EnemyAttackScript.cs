@@ -17,6 +17,8 @@ public class EnemyAttackScript : MonoBehaviour
 
     Rigidbody2D RB2D;
 
+    private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,8 @@ public class EnemyAttackScript : MonoBehaviour
 
         RB2D = gameObject.GetComponent<Rigidbody2D>();
 
+        animator = gameObject.GetComponentInParent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -38,11 +42,11 @@ public class EnemyAttackScript : MonoBehaviour
 
         Direction = Player.transform.InverseTransformPoint(transform.position).x;
 
-        //Debug.LogWarning(Direction);
-
         if (Direction < 0)
         {
             Side = true;
+
+
         }
 
         if (Direction > 0)
@@ -52,7 +56,10 @@ public class EnemyAttackScript : MonoBehaviour
 
         if (Vector2.Distance(Player.transform.position, gameObject.transform.position) < 3.4 && Attack == false)
         {
-            if(Side)
+
+            animator.SetBool("Punch", true);
+
+            if (Side)
             {
 
                 Attack = true;
@@ -87,6 +94,8 @@ public class EnemyAttackScript : MonoBehaviour
         yield return new WaitForSecondsRealtime((float)1.25);
 
         Attack = false;
+
+        animator.SetBool("Punch", false);
 
     }
 }

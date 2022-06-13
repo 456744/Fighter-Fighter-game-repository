@@ -18,6 +18,8 @@ public class EnemyHealthScript : MonoBehaviour
 
     public int ScoreUp;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,27 +31,46 @@ public class EnemyHealthScript : MonoBehaviour
         SpawnR = (GameObject.FindGameObjectsWithTag("Respawn"))[0];
 
         Score = (GameObject.FindGameObjectsWithTag("Score"))[0];
+
+        animator = gameObject.GetComponentInParent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        animator.SetBool("Hit", false);
+
         if (Vector2.Distance(Hit.transform.position, gameObject.transform.position) < 1)
         {
             Health--;
+
+            animator.SetBool("Hit", true);
         }
 
         if(Health <= 0)
         {
 
+            animator.SetBool("Defeat", true);
+
             SpawnR.GetComponent<EnemySpawnScript>().SpawnR++;
 
             Score.GetComponent<ScoreScript>().Score = (Score.GetComponent<ScoreScript>().Score + ScoreUp);
 
-            Destroy(transform.root.gameObject);
+            Health = 999999;
+
+            StartCoroutine(Wait());
 
         }
+
+    }
+
+    IEnumerator Wait()
+    {
+
+        yield return new WaitForSecondsRealtime(2);
+
+        Destroy(transform.root.gameObject);
 
     }
 }

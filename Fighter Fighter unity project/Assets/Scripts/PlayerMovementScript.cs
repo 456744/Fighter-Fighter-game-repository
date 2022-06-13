@@ -13,6 +13,10 @@ public class PlayerMovementScript : MonoBehaviour
 
     bool Duck;
 
+    private Animator animator;
+
+    SpriteRenderer Sprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,10 @@ public class PlayerMovementScript : MonoBehaviour
         Duck = false;
 
         OurRigidBody = GetComponent<Rigidbody2D>();
+
+        animator = GetComponent<Animator>();
+
+        Sprite = gameObject.GetComponent<SpriteRenderer>();
 
     }
 
@@ -88,6 +96,8 @@ public class PlayerMovementScript : MonoBehaviour
 
                 Attack = true;
 
+                animator.SetBool("Punch", true);
+
                 StartCoroutine(Wait());
 
             }
@@ -96,6 +106,8 @@ public class PlayerMovementScript : MonoBehaviour
             {
 
                 Attack = true;
+
+                animator.SetBool("Uppercut", true);
 
                 StartCoroutine(Wait2());
 
@@ -107,6 +119,8 @@ public class PlayerMovementScript : MonoBehaviour
                 Attack = true;
 
                 Duck = true;
+
+                animator.SetBool("Duck", true);
 
                 StartCoroutine(Wait2());
 
@@ -121,6 +135,8 @@ public class PlayerMovementScript : MonoBehaviour
 
         Attack = false;
 
+        animator.SetBool("Punch", false);
+
     }
 
     IEnumerator Wait2()
@@ -131,6 +147,10 @@ public class PlayerMovementScript : MonoBehaviour
         Attack = false;
 
         Duck = false;
+
+        animator.SetBool("Uppercut", false);
+
+        animator.SetBool("Duck", false);
 
     }
 

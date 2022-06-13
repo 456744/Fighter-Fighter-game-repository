@@ -15,6 +15,8 @@ public class ScoreScript : MonoBehaviour
     void Start()
     {
         Score = 0;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame

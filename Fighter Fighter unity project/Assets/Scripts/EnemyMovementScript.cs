@@ -17,6 +17,10 @@ public class EnemyMovementScript : MonoBehaviour
 
     bool spawn;
 
+    public Rigidbody2D rb;
+
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +37,23 @@ public class EnemyMovementScript : MonoBehaviour
 
         spawn = true;
 
+        rb = GetComponent<Rigidbody2D>();
+
+        animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (rb.velocity != Vector2.zero)
+        {
+            animator.SetBool("Walk", true);
+        }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
 
         transform.rotation = Quaternion.Euler(0, 0, 0);
 

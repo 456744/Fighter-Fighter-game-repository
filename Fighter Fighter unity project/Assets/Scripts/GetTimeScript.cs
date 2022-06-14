@@ -13,7 +13,7 @@ public class GetTimeScript : MonoBehaviour
 
     public Text ScoreDisplay;
 
-    // Start is called before the first frame update
+    //gets the time taken in secs and mins then displays in text then tells score/time object to destroy self
     void Start()
     {
 

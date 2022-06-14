@@ -20,7 +20,7 @@ public class EnemyHealthScript : MonoBehaviour
 
     private Animator animator;
 
-    // Start is called before the first frame update
+    // Start is used to set starting values
     void Start()
     {
 
@@ -40,23 +40,23 @@ public class EnemyHealthScript : MonoBehaviour
     {
 
         animator.SetBool("Hit", false);
-
+        //detects when object is hit then reduces health
         if (Vector2.Distance(Hit.transform.position, gameObject.transform.position) < 1)
         {
             Health--;
 
             animator.SetBool("Hit", true);
         }
-
+        //detects when health runs out then starts destroying object
         if(Health <= 0)
         {
 
             animator.SetBool("Defeat", true);
-
+            //tells the program to spawn a new enemy
             SpawnR.GetComponent<EnemySpawnScript>().SpawnR++;
-
+            //increases the score
             Score.GetComponent<ScoreScript>().Score = (Score.GetComponent<ScoreScript>().Score + ScoreUp);
-
+            //sets the health up to prevent multiple enemies from being spawned
             Health = 999999;
 
             StartCoroutine(Wait());
@@ -67,9 +67,9 @@ public class EnemyHealthScript : MonoBehaviour
 
     IEnumerator Wait()
     {
-
+        //waits for animation
         yield return new WaitForSecondsRealtime(2);
-
+        //destroyes object
         Destroy(transform.root.gameObject);
 
     }

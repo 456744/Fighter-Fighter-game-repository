@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//animates when walking
 public class SpriteScript : MonoBehaviour
 {
     public Rigidbody2D rb;

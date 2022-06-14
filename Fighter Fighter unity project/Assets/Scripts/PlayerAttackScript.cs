@@ -28,6 +28,7 @@ public class PlayerAttackScript : MonoBehaviour
     {
         if (Attack == false)
         {
+            //when j pressed punch to left
             if (Input.GetKeyDown("j"))
             {
 
@@ -38,7 +39,7 @@ public class PlayerAttackScript : MonoBehaviour
                 StartCoroutine(Wait());
 
             }
-
+            //when l pressed punch to right
             if (Input.GetKeyDown("l"))
             {
 
@@ -49,7 +50,7 @@ public class PlayerAttackScript : MonoBehaviour
                 StartCoroutine(Wait());
 
             }
-
+            //when i pressed uppercut
             if (Input.GetKeyDown("i"))
             {
 
@@ -58,7 +59,7 @@ public class PlayerAttackScript : MonoBehaviour
                 StartCoroutine(Wait2());
 
             }
-
+            //when k pressed duck
             if (Input.GetKeyDown("k"))
             {
 
@@ -71,7 +72,7 @@ public class PlayerAttackScript : MonoBehaviour
         }
 
     }
-
+    //wait for various times and reset positions
     IEnumerator Wait()
     {
 

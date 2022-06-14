@@ -17,7 +17,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     SpriteRenderer Sprite;
 
-    // Start is called before the first frame update
+    // Start is used to set starting values
     void Start()
     {
 
@@ -36,9 +36,9 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //prevents the object from rotating
         transform.rotation = Quaternion.Euler(0, 0, 0);
-
+        //moves player in direction pressed if not ducking
         if (Duck == false)
         {
 
@@ -87,7 +87,7 @@ public class PlayerMovementScript : MonoBehaviour
             }
 
         }
-
+        // animates sprite when performing the various attacks
         if (Attack == false)
         {
 
@@ -127,7 +127,7 @@ public class PlayerMovementScript : MonoBehaviour
             }
         }
     }
-
+    //two wait and reset scripts
     IEnumerator Wait()
     {
 

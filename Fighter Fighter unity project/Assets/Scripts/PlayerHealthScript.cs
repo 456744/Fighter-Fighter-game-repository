@@ -15,7 +15,7 @@ public class PlayerHealthScript : MonoBehaviour
     bool Attack;
 
 
-    // Start is called before the first frame update
+    // Start is used to set starting values
     void Start()
     {
 
@@ -40,7 +40,7 @@ public class PlayerHealthScript : MonoBehaviour
         GameObject closest = null;
 
         float distance = Mathf.Infinity;
-
+        //finds if closest enemy is in range of hitbox
         foreach (GameObject Hit in FindHit)
         {
             Vector3 diff = Hit.transform.position - position;
@@ -54,7 +54,7 @@ public class PlayerHealthScript : MonoBehaviour
                 distance = curDistance;
             }
         }
-
+        //if enemy attack overlays hitbox reduces health over duration
         if (Vector2.Distance(closest.transform.position, gameObject.transform.position) < 1)
         {
 
@@ -62,14 +62,14 @@ public class PlayerHealthScript : MonoBehaviour
 
             animator.SetBool("Hit", true);
         }
-
+        //dev control to instakill player
         if (Input.GetKeyDown("r"))
         {
 
             Health = 0;
 
         }
-
+        //when health reaches 0 play depeated animation then move to next scene
         if (Health == 0)
         {
 
@@ -80,7 +80,7 @@ public class PlayerHealthScript : MonoBehaviour
 
         if (Attack == false)
         {
-
+            // used to ensure duck can only be used at propper time
             if (Input.GetKeyDown("l") || Input.GetKeyDown("j"))
             {
 
@@ -103,7 +103,7 @@ public class PlayerHealthScript : MonoBehaviour
             {
 
                 Attack = true;
-
+                //sets hitbox outside of screen
                 transform.localPosition = new Vector3(0, 100000, 0);
 
                 StartCoroutine(Wait3());
@@ -111,7 +111,7 @@ public class PlayerHealthScript : MonoBehaviour
             }
         }
     }
-
+    //various wait and reset over different durations
     IEnumerator Wait()
     {
 
@@ -142,7 +142,7 @@ public class PlayerHealthScript : MonoBehaviour
         Attack = false;
 
     }
-
+    //waits 2 secs then moves to next scene
     IEnumerator Wait4()
     {
 

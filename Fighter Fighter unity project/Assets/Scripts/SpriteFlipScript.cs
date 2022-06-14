@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//attempts to flip player sprite to face proper direction but doesn't work as it keeps changing parent object sprite renderer rather than sprite object sprite renderer
 public class SpriteFlipScript : MonoBehaviour
 {
 

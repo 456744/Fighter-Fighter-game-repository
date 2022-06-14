@@ -15,7 +15,7 @@ public class EnemySpawnScript : MonoBehaviour
 
     public int SpawnR;
 
-    // Start is called before the first frame update
+    // Start is used to set starting values and spawn first enemy
     void Start()
     {
 
@@ -33,7 +33,7 @@ public class EnemySpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //every minute spawn a new basic enemy
         if (SpawnB == false)
         {
 
@@ -42,7 +42,7 @@ public class EnemySpawnScript : MonoBehaviour
             SpawnB = true;
 
         }
-
+        //after 6 mins spawns a stronger enemy
         if(SpawnS >= 6)
         {
 
@@ -51,7 +51,7 @@ public class EnemySpawnScript : MonoBehaviour
             SpawnS = 0;
 
         }
-
+        //used to tell script to spawn new enemy when old one defeated
         if(SpawnR > 0)
         {
 
@@ -62,7 +62,7 @@ public class EnemySpawnScript : MonoBehaviour
 
 
     }
-
+    //spawns basic enemy
     IEnumerator Wait()
     {
 

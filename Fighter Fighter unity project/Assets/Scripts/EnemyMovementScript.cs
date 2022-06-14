@@ -21,7 +21,7 @@ public class EnemyMovementScript : MonoBehaviour
 
     private Animator animator;
 
-    // Start is called before the first frame update
+    // Start is used to set starting values
     void Start()
     {
 
@@ -46,6 +46,7 @@ public class EnemyMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //detects if the object is moving
         if (rb.velocity != Vector2.zero)
         {
             animator.SetBool("Walk", true);
@@ -54,11 +55,12 @@ public class EnemyMovementScript : MonoBehaviour
         {
             animator.SetBool("Walk", false);
         }
-
+        //prevents the object from rotating
         transform.rotation = Quaternion.Euler(0, 0, 0);
-
+        
         if (spawn == false)
         {
+            //walks towards player until in range
             if (Vector2.Distance(Player.transform.position, gameObject.transform.position) > 3.6)
             {
 
@@ -67,7 +69,7 @@ public class EnemyMovementScript : MonoBehaviour
                 OurRigidBody.AddForce(direction.normalized * strength, ForceMode2D.Impulse);
 
             }
-
+            //walks away from player until in range
             if (Vector2.Distance(Player.transform.position, gameObject.transform.position) < 3.4)
             {
 
@@ -77,6 +79,7 @@ public class EnemyMovementScript : MonoBehaviour
 
             }
         }
+        //when first spawning walk straight left onto screen
         if (spawn == true)
         {
 
@@ -87,7 +90,7 @@ public class EnemyMovementScript : MonoBehaviour
         }
 
     }
-
+    //waits for object to walk into screen before turning on hitbox
     IEnumerator Wait()
     {
 

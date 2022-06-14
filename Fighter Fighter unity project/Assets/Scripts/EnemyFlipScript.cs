@@ -13,7 +13,7 @@ public class EnemyFlipScript : MonoBehaviour
 
     SpriteRenderer Sprite;
 
-    // Start is called before the first frame update
+    // Start is used to set starting values
     void Start()
     {
 
@@ -28,7 +28,7 @@ public class EnemyFlipScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //detects which direction the player is in then makes object face in that direction
         Direction = Player.transform.InverseTransformPoint(transform.position).x;
 
         if (Direction < 0)

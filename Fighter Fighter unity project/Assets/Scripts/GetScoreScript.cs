@@ -11,7 +11,7 @@ public class GetScoreScript : MonoBehaviour
 
     public Text ScoreDisplay;
 
-    // Start is called before the first frame update
+    //gets the score value from score object then displayes it to text
     void Start()
     {
 

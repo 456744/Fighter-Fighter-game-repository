@@ -15,7 +15,7 @@ public class ScoreScript : MonoBehaviour
 
     public bool Delete = false;
 
-    // Start is called before the first frame update
+    //set score to 0 and prevents object being destroyed during scene transition
     void Start()
     {
         Score = 0;
@@ -26,19 +26,20 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //increase timer in seconds
         if (Second == false)
         {
             StartCoroutine(Timer());
 
             Second = true;
         }
-
+        //when possible removes min from secs then stores
         if(TimeS>=60)
         {
             TimeM++;
             TimeS -= 60;
         }
-
+        //when delete set to true destroy object
         if(Delete)
         {
             Destroy(gameObject);

@@ -7,9 +7,13 @@ public class ScoreScript : MonoBehaviour
 
     public int Score;
 
-    public int Time;
+    public int TimeS;
+
+    public int TimeM;
 
     bool Second = false;
+
+    public bool Delete = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,17 @@ public class ScoreScript : MonoBehaviour
 
             Second = true;
         }
+
+        if(TimeS>=60)
+        {
+            TimeM++;
+            TimeS -= 60;
+        }
+
+        if(Delete)
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator Timer()
@@ -35,7 +50,7 @@ public class ScoreScript : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1);
 
-        Time++;
+        TimeS++;
 
         Second = false;
 

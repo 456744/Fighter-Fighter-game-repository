@@ -63,6 +63,13 @@ public class PlayerHealthScript : MonoBehaviour
             animator.SetBool("Hit", true);
         }
 
+        if (Input.GetKeyDown("r"))
+        {
+
+            Health = 0;
+
+        }
+
         if (Health == 0)
         {
 

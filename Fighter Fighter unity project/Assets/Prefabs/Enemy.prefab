@@ -166,6 +166,7 @@ MonoBehaviour:
   SpawnR: {fileID: 0}
   Score: {fileID: 0}
   ScoreUp: 1
+  HealthVal: 0
 --- !u!95 &5032131905736684842
 Animator:
   serializedVersion: 3
@@ -197,6 +198,7 @@ GameObject:
   - component: {fileID: 9037780991407301033}
   - component: {fileID: 9037780991407301032}
   - component: {fileID: 1706636812422378827}
+  - component: {fileID: 1784163808}
   m_Layer: 0
   m_Name: Enemy sprite
   m_TagString: Untagged
@@ -293,6 +295,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdb7920eb6deef4a9d262b1e96e4da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1784163808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037780991407301038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c56fd0e1348e4147bdec0b59c166959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &9037780991514484738
 GameObject:
   m_ObjectHideFlags: 0

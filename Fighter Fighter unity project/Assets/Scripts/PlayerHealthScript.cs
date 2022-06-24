@@ -21,7 +21,7 @@ public class PlayerHealthScript : MonoBehaviour
 
         Attack = false;
 
-        Health = 5000;
+        Health = 2000;
 
         animator = gameObject.GetComponentInParent<Animator>();
 

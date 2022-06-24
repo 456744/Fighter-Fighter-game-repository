@@ -20,6 +20,10 @@ public class EnemyHealthScript : MonoBehaviour
 
     private Animator animator;
 
+    GameObject HealthDisplay;
+
+    public float HealthVal;
+
     // Start is used to set starting values
     void Start()
     {
@@ -33,11 +37,18 @@ public class EnemyHealthScript : MonoBehaviour
         Score = (GameObject.FindGameObjectsWithTag("Score"))[0];
 
         animator = gameObject.GetComponentInParent<Animator>();
+
+        HealthDisplay = this.gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        HealthVal = Health;
+
+        HealthDisplay.GetComponent<EnemyHealthDisplayScript>().health = (float)(HealthVal / 3.5);
+
 
         animator.SetBool("Hit", false);
         //detects when object is hit then reduces health
